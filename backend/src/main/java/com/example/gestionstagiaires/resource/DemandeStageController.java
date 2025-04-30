@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3002")
 @RestController
 @RequestMapping("/api/demande-de-stage")
 public class DemandeStageController {

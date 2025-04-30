@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3002")
 @RestController
 @RequestMapping("/api/stagiaires")
 public class StagiaireController {
@@ -41,11 +41,13 @@ public class StagiaireController {
     }
 
     // Mettre à jour un stagiaire existant
-    @PutMapping("/metter_a_jour_stagiaire")
-    public ResponseEntity<Void> update(@RequestBody Stagiaire stagiaire) {
+    @PutMapping("/mettre_a_jour_stagiaire/{id}")
+    public ResponseEntity<Void> update(@PathVariable int id, @RequestBody Stagiaire stagiaire) {
+        stagiaire.setId(id);  // Assurez-vous que l'ID du stagiaire est mis à jour
         service.modifierStagiaire(stagiaire);
         return ResponseEntity.ok().build();  // Code HTTP 200 (OK)
     }
+  
 
     // Supprimer un stagiaire par ID
     @DeleteMapping("/delete_stagiaire/{id}")
